@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Cintaku ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(45deg, #ff6b9d, #ffc3e0, #ff9ff3, #f368e0);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.4rem;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .apology-message {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp 1.5s ease-out;
+            border: 3px solid rgba(255, 182, 193, 0.5);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .apology-message h2 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .apology-message p {
+            color: #495057;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.8s ease-out;
+            border: 3px solid rgba(255, 182, 193, 0.3);
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-caption {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .photo-caption h3 {
+            color: #d63384;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .photo-caption p {
+            color: #6c757d;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .promise-section {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 182, 193, 0.3));
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideUp 2s ease-out;
+            border: 3px solid rgba(255, 182, 193, 0.4);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .promise-section h2 {
+            color: #d63384;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .promise-section p {
+            color: #495057;
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .love-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6b9d, #f368e0);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4);
+            animation: glow 2s infinite alternate;
+            cursor: pointer;
+            border: none;
+        }
+
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.6);
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 10px 25px rgba(255, 107, 157, 0.4); }
+            to { box-shadow: 0 10px 25px rgba(255, 107, 157, 0.8); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer p {
+            color: white;
+            font-size: 1.1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .instruction-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #d63384;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .instruction-box h3 {
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        .instruction-box p {
+            color: #495057;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .header p { font-size: 1.1rem; }
+            .apology-message h2 { font-size: 2rem; }
+            .apology-message p { font-size: 1rem; }
+            .promise-section h2 { font-size: 2rem; }
+            .promise-section p { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="container">
+
+        <div class="header">
+            <h1>Maafkan Aku Sayang ❤️</h1>
+            <p>Untuk orang yang paling berarti dalam hidupku</p>
+        </div>
+
+        <div class="apology-message">
+            <h2>Dari Lubuk Hati Yang Terdalam 💕</h2>
+            <p>Sayang, aku tahu aku telah melakukan kesalahan yang membuatmu kecewa dan terluka. Tidak ada kata-kata yang cukup untuk mengungkapkan betapa menyesalnya aku atas semua yang terjadi.</p>
+            
+            <p>Setiap detik berlalu, aku terus memikirkan tentang betapa bodohnya aku telah menyakiti hati orang yang paling aku cintai di dunia ini. Kamu adalah cahaya dalam hidupku, dan aku tidak ingin kehilangan cahaya itu karena kebodohanku.</p>
+            
+            <p>Aku berjanji akan berubah menjadi lebih baik, lebih perhatian, dan tidak akan mengulangi kesalahan yang sama lagi. Cintaku kepadamu tidak pernah berubah, bahkan semakin kuat setiap harinya.</p>
+            
+            <p>Foto-foto ini adalah kenangan yang cukup berharga bagi ku walaupunn ga ada foto kita berdua hehehe. Setiap senyumanmu dalam foto ini mengingatkanku betapa beruntungnya aku memilikimu.</p>
+        </div>
+
+        <div class="photo-gallery">
+            <!-- FOTO 1 - Ganti URL_FOTO_1 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/JN14N0x" alt="Memory 1" onerror="this.src='https://via.placeholder.com/400x300/ff6b9d/white?text=Upload+Foto+1'">
+                <div class="photo-caption">
+                    <h3>ukhtii darimanaaa inii koo cantikk bangettt dahhh</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 2 - Ganti URL_FOTO_2 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/kgtcg9nX" alt="Memory 2" onerror="this.src='https://via.placeholder.com/400x300/ffc3e0/white?text=Upload+Foto+2'">
+                <div class="photo-caption">
+                    <h3>ampunnn uktii jangannn marahhh ukhtii</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 3 - Ganti URL_FOTO_3 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/ND2ZPYP" alt="Memory 3" onerror="this.src='https://via.placeholder.com/400x300/ff9ff3/white?text=Upload+Foto+3'">
+                <div class="photo-caption">
+                    <h3>cantiknyaaa oyyy bikinnn hati melelehhh</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 4 - Ganti URL_FOTO_4 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/RGGTJys8" alt="Memory 4" onerror="this.src='https://via.placeholder.com/400x300/f368e0/white?text=Upload+Foto+4'">
+                <div class="photo-caption">
+                    <h3>maniss bangett maduu kalahh maniss ini mahh</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 5 - Ganti URL_FOTO_5 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/8DtvBGyF" alt="Memory 5" onerror="this.src='https://via.placeholder.com/400x300/ff6b9d/white?text=Upload+Foto+5'">
+                <div class="photo-caption">
+                    <h3>bocilllllllll</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 6 - Ganti URL_FOTO_6 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/mFGncGPN" alt="Memory 6" onerror="this.src='https://via.placeholder.com/400x300/ffc3e0/white?text=Upload+Foto+6'">
+                <div class="photo-caption">
+                    <h3>mukaaa marah tapi gapapa see masihh cantikk oyy</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 7 - Ganti URL_FOTO_7 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/cc00XKQg" alt="Memory 7" onerror="this.src='https://via.placeholder.com/400x300/ff9ff3/white?text=Upload+Foto+7'">
+                <div class="photo-caption">
+                    <h3>pov:bocil ketikaa keluarrr</h3>
+                </div>
+            </div>
+
+            <!-- FOTO 8 - Ganti URL_FOTO_8 dengan link foto asli -->
+            <div class="photo-card">
+                <img src="https://ibb.co.com/8LCs1x56" alt="Memory 8" onerror="this.src='https://via.placeholder.com/400x300/f368e0/white?text=Upload+Foto+8'">
+                <div class="photo-caption">
+                    <h3>bocill kalauuu nggaaa di kasih makann</h3>
+                </div>
+            </div>
+
+        <div class="promise-section">
+            <h2>Janji Hatiku 💖</h2>
+            <p>Aku berjanji akan menjadi pria yang lebih baik untukmu. Aku akan lebih menghargai perasaanmu, lebih memperhatikan kebutuhanmu, dan tidak akan mengulangi kesalahan yang sama.</p>
+            <p>Cintaku kepadamu murni dan tulus. Aku siap melakukan apa saja untuk mendapatkan maafmu dan kepercayaanmu kembali.</p>
+            <button class="love-button" onclick="showLoveMessage()">Aku Mencintaimu ❤️</button>
+        </div>
+
+        <div class="footer">
+            <p>Dengan segenap cinta dan penyesalan yang mendalam<br>
+            <strong>Dari seseorang yang sangat mencintaimu 💕</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Membuat hati-hati yang berjatuhan
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            const hearts = ['💖', '💕', '💘', '💝', '💗', '💓', '💞', '💟', '❤️'];
+            
+            function addHeart() {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 10 + 15) + 'px';
+                
+                heartsContainer.appendChild(heart);
+                
+                setTimeout(() => {
+                    if (heartsContainer.contains(heart)) {
+                        heartsContainer.removeChild(heart);
+                    }
+                }, 6000);
+            }
+            
+            setInterval(addHeart, 500);
+        }
+
+        // Pesan cinta saat tombol ditekan
+        function showLoveMessage() {
+            const messages = [
+                "Aku sangat mencintaimu! 💖",
+                "Maafkan aku sayang... 🥺",
+                "Kamu adalah segalanya bagiku 💕",
+                "Tanpa kamu, hidupku tidak lengkap 💔",
+                "Aku berjanji akan berubah! 🙏",
+                "Terima kasih sudah membaca ini ❤️"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            alert(randomMessage);
+        }
+
+        // Jalankan animasi hati saat halaman dimuat
+        window.onload = function() {
+            createHearts();
+        }
+    </script>
+</body>
+</html>
